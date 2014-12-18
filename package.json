@@ -1,0 +1,22 @@
+{
+  "name": "email-to-slack",
+  "version": "0.0.0",
+  "description": "email to slack by IMAP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chocopie116/hook-email-to-post-slack.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/chocopie116/hook-email-to-post-slack/issues"
+  },
+  "dependencies": {
+    "inbox": "~1.1.59",
+    "iconv": "~2.1.4"
+  }
+}
