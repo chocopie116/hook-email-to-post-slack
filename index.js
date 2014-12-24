@@ -1,5 +1,6 @@
 var inbox = require('inbox')
-    Iconv = require('iconv').Iconv;
+    Iconv = require('iconv').Iconv,
+    Mailparser = require('mailparser').MailParser;
 
 var client = inbox.createConnection(false, "imap.gmail.com", {
   secureConnection: true,
@@ -9,6 +10,8 @@ var client = inbox.createConnection(false, "imap.gmail.com", {
     }
 });
 
+var mailparser = new Mailparser();
+
 client.on("connect", function() {
   client.openMailbox("INBOX", function(error, info) {
       if(error) throw error;
@@ -16,12 +19,18 @@ client.on("connect", function() {
     });
 });
 
+mailparser.on('end', function(email) {
+    console.log("from", email.from);
+    console.log("subject", email.subject);
+    console.log("text", email.text);
+});
+
 client.on("new", function(message) {
-  console.log(message.title, message.from, message.date, message.UID);
   client.createMessageStream(message.UID).on("data", function(data){
       var conv = new Iconv('UTF-8', 'ISO-8859-1');
       var body = conv.convert(data).toString();
-      console.log(body);
+      mailparser.write(body);
+      mailparser.end();
     });
 });
 
