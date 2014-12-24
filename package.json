@@ -18,6 +18,7 @@
   "dependencies": {
     "inbox": "~1.1.59",
     "iconv": "~2.1.4",
-    "mailparser": "~0.4.6"
+    "mailparser": "~0.4.6",
+    "node-slack": "0.0.5"
   }
 }
