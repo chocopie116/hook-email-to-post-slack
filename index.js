@@ -6,7 +6,7 @@ var inbox = require('inbox')
 var client = inbox.createConnection(false, "imap.gmail.com", {
   secureConnection: true,
   auth: {
-      user: process.env.EMAIL_ACOUNT,
+      user: process.env.EMAIL_ACCOUNT,
       pass: process.env.EMAIL_PASSWORD
     }
 });
